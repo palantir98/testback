@@ -24,6 +24,11 @@ app.get("/test", (req,res)=>{
     res.send("Prueba de puerto" + port);
 })
 
+app.get('/nombre', (req, res) => {
+    const nombre = { nombre: 'Juan' };
+    res.json(nombre);
+  });
+
 app.post("/create", (req,res)=>{
     const vehiculo = req.body.vehiculo;
     const block = req.body.block;
@@ -45,8 +50,7 @@ app.post("/create", (req,res)=>{
 
 
 const port = process.env.PORT;
-const host = process.env.HOST;
 
-app.listen(process.env.PORT, process.env.HOST, ()=>{
-    console.log("Corriendo en el puerto" + port + host)
+app.listen(process.env.PORT, ()=>{
+    console.log("Corriendo en el puerto" + port)
 })
