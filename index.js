@@ -24,9 +24,11 @@ app.get("/test", (req,res)=>{
     res.send("Prueba de puerto" + port);
 })
 
-app.get('/nombre', (req, res) => {
+app.get('/nombre', (req, res, next) => {
     const nombre = { nombre: 'Juan' };
     res.json(nombre);
+    console.log("se hizo peticion")
+    next();
   });
 
 app.post("/create", (req,res)=>{
