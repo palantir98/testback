@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const cors = require("cors");
 
 
@@ -16,7 +16,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host:"webforge.cl",
     user:"webforge_appVehiculos",
-    password:";BOg1vRj148Q",
+    password: process.env.PASS,
     database:"webforge_vehiculos_app"
 });
 
