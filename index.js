@@ -1,9 +1,14 @@
 require('dotenv').config()
 const express = require("express");
 const app = express();
-const mysql = require("mysql2");
+const mysql = require("mysql");
+const cors = require("cors");
 
 
+
+const corsOptions = {
+    origin: 'https://vehiculos.webforge.cl/'
+}
 
 app.use(express.json());
 
@@ -19,18 +24,7 @@ db.connect((err) => {
     console.log("Conectado");
 });
 
-app.get("/test", (req,res)=>{
-    res.send("Prueba de puerto" + port);
-})
-
-app.get('/nombre', (req, res, next) => {
-    const nombre = { nombre: 'Juan' };
-    res.json(nombre);
-    console.log("se hizo peticion")
-    next();
-  });
-
-app.post("/create", (req,res)=>{
+app.post("/create", cors(corsOptions), (req,res)=>{
     const vehiculo = req.body.vehiculo;
     const block = req.body.block;
     const departamento = req.body.departamento;
@@ -53,5 +47,5 @@ app.post("/create", (req,res)=>{
 const port = process.env.PORT;
 
 app.listen(process.env.PORT, ()=>{
-    console.log("Corriendo en el puerto" + port)
+    console.log("Corriendo en el puerto" + port + host)
 })
