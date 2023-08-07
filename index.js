@@ -5,9 +5,10 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 
+app.use(cors());
 
 const corsOptions = {
-    origin: 'https://vehiculos.webforge.cl/'
+    origin: 'https://vehiculos.webforge.cl'
 }
 
 app.use(express.json());
