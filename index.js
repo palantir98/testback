@@ -25,6 +25,10 @@ db.connect((err) => {
     console.log("Conectado");
 });
 
+app.get("/", (req,res)=>{
+    res.send("Funcionando " + process.env.PASS);
+})
+
 app.post("/create", cors(corsOptions), (req,res)=>{
     const vehiculo = req.body.vehiculo;
     const block = req.body.block;
