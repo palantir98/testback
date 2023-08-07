@@ -48,5 +48,5 @@ app.post("/create", cors(corsOptions), (req,res)=>{
 const port = process.env.PORT;
 
 app.listen(process.env.PORT, ()=>{
-    console.log("Corriendo en el puerto" + port + host)
+    console.log("Corriendo en el puerto" + port)
 })
